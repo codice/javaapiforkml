@@ -42,6 +42,8 @@ import de.micromata.opengis.kml.v_2_2_0.gx.Tour;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -79,6 +81,7 @@ import org.xml.sax.SAXException;
 @XmlRootElement(name = "kml", namespace = "http://www.opengis.net/kml/2.2")
 public class Kml implements Cloneable
 {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Kml.class);
 
     /**
      * <NetworkLinkControl>
@@ -683,7 +686,7 @@ public class Kml implements Cloneable
             m.marshal(this, outputstream);
             return true;
         } catch (JAXBException _x) {
-            _x.printStackTrace();
+            LOGGER.debug("Marshal exception: ", _x);;
             return false;
         }
     }
@@ -701,7 +704,7 @@ public class Kml implements Cloneable
             m.marshal(this, writer);
             return true;
         } catch (JAXBException _x) {
-            _x.printStackTrace();
+            LOGGER.debug("Marshal exception: ", _x);;
             return false;
         }
     }
@@ -722,7 +725,7 @@ public class Kml implements Cloneable
             m.marshal(this, contenthandler);
             return true;
         } catch (JAXBException _x) {
-            _x.printStackTrace();
+            LOGGER.debug("Marshal exception: ", _x);;
             return false;
         }
     }
@@ -740,7 +743,7 @@ public class Kml implements Cloneable
             m.marshal(this, System.out);
             return true;
         } catch (JAXBException _x) {
-            _x.printStackTrace();
+            LOGGER.debug("Marshal exception: ", _x);;
             return false;
         }
     }
@@ -783,7 +786,7 @@ public class Kml implements Cloneable
             unmarshaller.setSchema(schema);
             return true;
         } catch (SAXException _x) {
-            _x.printStackTrace();
+            LOGGER.debug("Validate exception: ", _x);;
         }
         return false;
     }
@@ -807,13 +810,13 @@ public class Kml implements Cloneable
             Kml jaxbRootElement = ((Kml) unmarshaller.unmarshal(saxSource));
             return jaxbRootElement;
         } catch (SAXException _x) {
-            _x.printStackTrace();
+            LOGGER.debug("Unmarshal exception: ", _x);;
         } catch (ParserConfigurationException _x) {
-            _x.printStackTrace();
+            LOGGER.debug("Unmarshal exception: ", _x);;
         } catch (JAXBException _x) {
-            _x.printStackTrace();
+            LOGGER.debug("Unmarshal exception: ", _x);;
         } catch (FileNotFoundException _x) {
-            _x.printStackTrace();
+            LOGGER.debug("Unmarshal exception: ", _x);;
         }
         return null;
     }
@@ -846,11 +849,11 @@ public class Kml implements Cloneable
             Kml jaxbRootElement = ((Kml) unmarshaller.unmarshal(saxSource));
             return jaxbRootElement;
         } catch (SAXException _x) {
-            _x.printStackTrace();
+            LOGGER.debug("Unmarshal exception: ", _x);;
         } catch (ParserConfigurationException _x) {
-            _x.printStackTrace();
+            LOGGER.debug("Unmarshal exception: ", _x);;
         } catch (JAXBException _x) {
-            _x.printStackTrace();
+            LOGGER.debug("Unmarshal exception: ", _x);;
         }
         return null;
     }
@@ -871,11 +874,11 @@ public class Kml implements Cloneable
             Kml jaxbRootElement = ((Kml) unmarshaller.unmarshal(saxSource));
             return jaxbRootElement;
         } catch (SAXException _x) {
-            _x.printStackTrace();
+            LOGGER.debug("Unmarshal exception: ", _x);;
         } catch (ParserConfigurationException _x) {
-            _x.printStackTrace();
+            LOGGER.debug("Unmarshal exception: ", _x);;
         } catch (JAXBException _x) {
-            _x.printStackTrace();
+            LOGGER.debug("Unmarshal exception: ", _x);;
         }
         return null;
     }
